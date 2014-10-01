@@ -69,17 +69,21 @@ $stdin.each do |line|
    break if h > height
 end
 
-if h > height then
-   IO.popen('-', 'w') do |child|
-      if child then
-         copy(buf, child)
-         copy($stdin, child)
-      else
-         exec(*ARGV)
+begin
+   if h > height then
+      IO.popen('-', 'w') do |child|
+         if child then
+            copy(buf, child)
+            copy($stdin, child)
+         else
+            exec(*ARGV)
+         end
       end
+   else
+      copy(buf, $stdout)
    end
-else
-   copy(buf, $stdout)
+rescue Errno::EPIPE then
+      # ignore
 end
 
 exit 0
