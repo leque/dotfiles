@@ -68,7 +68,12 @@ setopt share_history
 
 # Completions
 ## for ssh
-_cache_hosts=(`perl -ne 'if (/^([A-Za-z0-9.:%-]+)/) { print $1, "\n"; }' ~/.ssh/known_hosts`)
+if test -f ~/.ssh/known_hosts; then
+    _cache_hosts=($(awk < ~/.ssh/known_hosts '
+  { if (match($0, /^[A-Za-z0-9.:%-]+/)) {
+    print(substr($0, RSTART, RLENGTH))
+  } }'))
+fi
 
 autoload -U compinit
 compinit -u
