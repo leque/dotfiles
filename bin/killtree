@@ -1,0 +1,17 @@
+#!/bin/sh
+case $1 in
+    (-*)
+        sig=$1
+        shift
+        ;;
+    (*)
+        sig=
+        ;;
+esac
+
+for pid in "$@"; do
+    for p in $(ps -o pid,ppid | sed 1d | awk '$2 == '$pid' { print $1 }'); do
+        "$0" $sig $p
+    done
+    kill $sig $pid
+done
