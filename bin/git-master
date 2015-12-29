@@ -1,0 +1,7 @@
+#!/bin/sh
+master=${1:-"master"}
+branch=$(git rev-parse --abbrev-ref HEAD)
+git rebase $master &&
+    git push . HEAD:$master
+    git checkout $master &&
+    git branch -D $branch
