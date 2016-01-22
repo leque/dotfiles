@@ -1,32 +1,22 @@
 PS1='%~%# '
 RPS1='%{[31m%}[%n@%m]%{[m%}'
 
-CDPATH=".:$HOME"
-FPATH="$FPATH:$HOME/.zfunctions"
-FIGNORE=.o:.aux:.out
+cdpath=(. $HOME)
+fpath=($fpath $HOME/.zfunctions)
+fignore=(.o .aux .out)
 
 for pager in lv
 do
-    if command -v "$pager" >/dev/null; then
-        export PAGER="$pager"
+    if command -v $pager >/dev/null; then
+        export PAGER=$pager
         break
     fi
 done
 
-case `uname` in
-    Darwin)
-        LANG=ja_JP.UTF-8
-        LV="-Ou"
-        ;;
-    *)
-        LANG=C
-        ;;
-esac
-
-export LANG
+export LANG=ja_JP.UTF-8
 export EDITOR=vi
-export LV="$LV -s -c"
-export RLWRAP_HOME="$HOME/.rlwrap"
+export LV="-Ou -s -c"
+export RLWRAP_HOME=$HOME/.rlwrap
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -41,30 +31,24 @@ dup() {
     done
 }
 
-
 # History
-HISTFILE="$HOME/.zhistory"
+HISTFILE=$HOME/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
-
 # Global aliases
-
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 alias -g //="| autopager $PAGER"
 
-
 # Options
-
 setopt always_last_prompt auto_cd auto_list auto_menu auto_param_keys
 setopt auto_remove_slash complete_in_word correct extended_glob
 setopt hist_ignore_all_dups hist_ignore_space hist_no_store hist_reduce_blanks
 setopt list_ambiguous no_beep no_list_beep no_clobber prompt_subst
 setopt share_history
-
 
 # Completions
 ## for ssh
@@ -86,9 +70,7 @@ compdef _man jman
 compdef _tex platex
 compdef -d javac java
 
-
 # key bindings
-
 bindkey -v
 
 bindkey -a '/' vi-history-search-forward
@@ -113,11 +95,9 @@ bindkey -a '^N' vi-down-line-or-history
 bindkey -a '[A' up-line-or-beginning-search
 bindkey -a '[B' down-line-or-beginning-search
 
-
 # Local configurations
-
 if [ -d ~/.zsh ]; then
-    for rc in $(find ~/.zsh -type f -user "$USER" -not -perm go+w -prune)
+    for rc in $(find ~/.zsh -type f -user $USER -not -perm go+w -prune)
     do
         source $rc
     done
