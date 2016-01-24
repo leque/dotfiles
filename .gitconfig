@@ -3,3 +3,5 @@
 	st = status
 [core]
 	commentchar = %
+[include]
+	path = ~/.gitconfig.local
