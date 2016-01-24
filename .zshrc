@@ -94,7 +94,7 @@ bindkey -a '[B' down-line-or-beginning-search
 
 # Local configurations
 if [ -d ~/.zsh ]; then
-    for rc in $(find ~/.zsh -type f -user $USER -not -perm go+w -prune)
+    for rc in ~/.zsh/*(.UN^WI)
     do
         source $rc
     done
