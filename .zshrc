@@ -73,9 +73,6 @@ compdef -d javac java
 # key bindings
 bindkey -v
 
-bindkey -a '/' vi-history-search-forward
-bindkey -a '?' vi-history-search-backward
-
 bindkey -a 'q' push-line
 
 autoload -U up-line-or-beginning-search
