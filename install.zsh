@@ -55,7 +55,14 @@ Install() {
 
 cd $(git rev-parse --show-toplevel)
 
-Install .gitconfig
+function {
+    local gitconfig=.gitconfig.common
+    if (( ! ${${(f)"$(git config --global --path --get-all include.path)"}[(I)$HOME/$gitconfig]} )); then
+        Do git config --global --add include.path $HOME/$gitconfig
+    fi
+    Install $gitconfig
+}
+
 Install .ideavimrc
 Install .inputrc
 Install .tmux.conf
