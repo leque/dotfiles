@@ -10,11 +10,11 @@ function usage() {
 usage: $(basename $0) [OPTION]
 Option:
   -n, --dry-run  Don't install files, just show what would be done.
-  -v, --verbose  Show what is going to be done
 EOF
 }
 
 function Do() {
+    dprint $@ >&2
     $@
 }
 
@@ -23,12 +23,6 @@ if [ $# -gt 0 ]; then
         (-n|--dry-run)
             function Do() {
                 dprint $@
-            }
-            ;;
-        (-v|--verbose)
-            function Do() {
-                dprint $@ >&2
-                $@
             }
             ;;
         (-h|--help)
