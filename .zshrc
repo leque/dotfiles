@@ -1,6 +1,3 @@
-PS1='%~%# '
-RPS1='%{[31m%}[%n@%m]%{[m%}'
-
 cdpath=(. $HOME)
 fpath=($fpath $HOME/.zfunctions)
 fignore=(.o .aux .out)
@@ -49,6 +46,36 @@ setopt auto_remove_slash complete_in_word correct extended_glob
 setopt hist_ignore_all_dups hist_ignore_space hist_no_store hist_reduce_blanks
 setopt list_ambiguous no_beep no_list_beep no_clobber prompt_subst
 setopt share_history
+
+# vcs
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "*"
+zstyle ':vcs_info:*' formats "%F{green}(%s %b%m%c%u)%f"
+zstyle ':vcs_info:*' actionformats '(%b|%a)'
+
++vi-git_relative_pos() {
+    local current=$(git rev-parse HEAD)
+    local upstream=$(git rev-parse 'HEAD@{upstream}')
+    if   [ $(git rev-list --count $upstream..$current) -gt 0 ]; then
+        hook_com[misc]='>'
+    elif [ $(git rev-list --count $current..$upstream) -gt 0 ]; then
+        hook_com[misc]='<'
+    else
+        hook_com[misc]='='
+    fi
+}
+
+zstyle ':vcs_info:git+set-message:*' hooks git_relative_pos
+
+add-zsh-hook precmd vcs_info
+
+# Prompt
+PS1='%~${vcs_info_msg_0_}%# '
+RPS1='%F{red}[%n@%m]%f'
 
 # Completions
 ## for ssh
