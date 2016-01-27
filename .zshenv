@@ -27,7 +27,7 @@ function {
     typeset -U manpath
 
     p=(${^dirs}/include(N-/))
-    CPATH=(${(j/:/)${(u)p}})
+    CPATH=${(j/:/)${(u)p}}
     export CPATH
 }
 
