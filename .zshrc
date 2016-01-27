@@ -106,18 +106,18 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N  up-line-or-beginning-search
 zle -N  down-line-or-beginning-search
-bindkey '' up-line-or-beginning-search
+bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
-bindkey '[A' up-line-or-beginning-search
-bindkey '[B' down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 bindkey -a 'k' up-line-or-beginning-search
 bindkey -a 'j' down-line-or-beginning-search
 bindkey -a '/' vi-history-search-forward
 bindkey -a '?' vi-history-search-backward
-bindkey -a '' vi-up-line-or-history
+bindkey -a '^P' vi-up-line-or-history
 bindkey -a '^N' vi-down-line-or-history
-bindkey -a '[A' up-line-or-beginning-search
-bindkey -a '[B' down-line-or-beginning-search
+bindkey -a '^[[A' up-line-or-beginning-search
+bindkey -a '^[[B' down-line-or-beginning-search
 
 # Local configurations
 if [ -d ~/.zsh ]; then
