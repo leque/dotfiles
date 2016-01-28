@@ -58,9 +58,12 @@ zstyle ':vcs_info:*' formats "%F{green}(%s %b%m%c%u)%f"
 zstyle ':vcs_info:*' actionformats '(%b|%a)'
 
 +vi-git_relative_pos() {
-    local current=$(git rev-parse HEAD)
-    local upstream=$(git rev-parse 'HEAD@{upstream}')
-    if   [ $(git rev-list --count $upstream..$current) -gt 0 ]; then
+    local current upstream
+    current=$(git rev-parse HEAD)
+    upstream=$(git rev-parse 'HEAD@{upstream}' 2>/dev/null)
+    if [ $? -gt 0 ]; then
+        hook_com[misc]='?'
+    elif [ $(git rev-list --count $upstream..$current) -gt 0 ]; then
         hook_com[misc]='>'
     elif [ $(git rev-list --count $current..$upstream) -gt 0 ]; then
         hook_com[misc]='<'
