@@ -54,8 +54,8 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "+"
 zstyle ':vcs_info:git:*' unstagedstr "*"
-zstyle ':vcs_info:*' formats "%F{green}(%s %b%m%c%u)%f"
-zstyle ':vcs_info:*' actionformats '(%b|%a)'
+zstyle ':vcs_info:*' formats "%F{cyan}(%s %b %m%F{yellow}%c%F{red}%u%F{cyan})%f"
+zstyle ':vcs_info:*' actionformats '%F{red}(%s %b|%a)%f'
 
 +vi-git_relative_pos() {
     local current upstream
@@ -72,7 +72,15 @@ zstyle ':vcs_info:*' actionformats '(%b|%a)'
     fi
 }
 
-zstyle ':vcs_info:git+set-message:*' hooks git_relative_pos
++vi-git_untracked() {
+    if [ ${#${(0)"$(git ls-files -z --others)"}} -gt 0 ]; then
+        hook_com[unstaged]+='!'
+    fi
+}
+
+zstyle ':vcs_info:git+set-message:*' hooks \
+       git_relative_pos \
+       git_untracked
 
 add-zsh-hook precmd vcs_info
 
