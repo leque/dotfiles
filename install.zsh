@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
 set -e
+autoload -U colors && colors
 
 function dprint() {
-    echo ${(q)@}
+    echo "${fg[blue]}==>${reset_color}" ${(q)@}
 }
 
 function usage() {
@@ -37,13 +38,19 @@ if [ $# -gt 0 ]; then
 fi
 
 Install() {
-    local dst
+    local dstdir src dst
     for f; do
-        dst=$(dirname $HOME/$f)
-        if [ ! -d $dst ]; then
-            Do mkdir -p $dst
+        dstdir=$(dirname $HOME/$f)
+        if [ ! -d $dstdir ]; then
+            Do mkdir -p $dstdir
         fi
-        Do ln -sf $PWD/$f $HOME/$f
+        src=$PWD/$f
+        dst=$HOME/$f
+        if [ -e $dst -a ! \( -L $dst -a $src = $dst:A \) ]; then
+            echo "${fg_bold[red]}==> $dst is already exists. do not overwrite.$reset_color"
+        else
+            Do ln -sf $src $dst
+        fi
     done
 }
 
