@@ -1,0 +1,48 @@
+#!/bin/sh
+usage() {
+    cat <<EOF
+usage: $(basename $0) [BRANCH [UPSTREAM]]
+
+let BRANCH (default HEAD) catch-up with UPSTREAM (default BRANCH@{upstream}).
+This command will fail if UPSTREAM is not fast-forward of BRANCH.
+EOF
+}
+
+case $# in
+    (0)
+        branch=HEAD
+        ;;
+    (*)
+        if [ "$1" = -h ]; then
+            usage
+            exit
+        fi
+        branch=$1
+
+        if [ "$branch" = ""$(git symbolic-ref --short HEAD) ]; then
+            branch=HEAD
+        fi
+        ;;
+esac
+
+case $# in
+    (0|1)
+        upstream="$branch@{upstream}"
+        git rev-parse "$upstream" >/dev/null || exit 1
+        ;;
+    (2)
+        upstream=$2
+        ;;
+    (*)
+        usage >&2
+        exit 1
+esac
+
+case "$branch" in
+    (HEAD)
+        git merge --ff-only "$upstream"
+        ;;
+    (*)
+        git push . "$upstream:$branch"
+        ;;
+esac
