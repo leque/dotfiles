@@ -73,7 +73,7 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%s %b|%a)%f'
 }
 
 +vi-git_untracked() {
-    if [ ${#${(0)"$(git ls-files -z --others)"}} -gt 0 ]; then
+    if [ ${#${(0)"$(git ls-files -z --others --exclude-standard)"}} -gt 0 ]; then
         hook_com[unstaged]+='!'
     fi
 }
