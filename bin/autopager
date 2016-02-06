@@ -32,8 +32,6 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-require 'curses'
-
 def usage(out, status)
    out.puts("usage: %s pager-command [args ...]" % File.basename($0))
    exit status
@@ -49,17 +47,10 @@ elsif %w(-h --help).include?(ARGV.first) then
    usage($stdout, 0)
 end
 
+require 'io/console/size'
 
-width = height = nil
-
-begin
-   scr = Curses.init_screen
-   width = (scr.maxx - 1).to_f
-   height = scr.maxy - 1
-ensure
-   Curses.close_screen
-end
-
+height, width = IO.console_size
+width = width.to_f
 h = 0
 buf = []
 
