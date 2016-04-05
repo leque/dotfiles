@@ -59,7 +59,7 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%s %b|%a)%f'
 
 +vi-git_relative_pos() {
     local current upstream
-    current=$(git rev-parse HEAD)
+    current=$(git rev-parse HEAD 2>/dev/null)
     upstream=$(git rev-parse 'HEAD@{upstream}' 2>/dev/null)
     if [ $? -gt 0 ]; then
         hook_com[misc]='?'
