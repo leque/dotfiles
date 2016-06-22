@@ -2,6 +2,8 @@ cdpath=(. $HOME)
 fpath=($fpath $HOME/.zfunctions)
 fignore=(.o .aux .out)
 
+umask 022
+
 for pager in lv
 do
     if command -v $pager >/dev/null; then
