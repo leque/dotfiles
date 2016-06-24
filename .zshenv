@@ -2,7 +2,7 @@ export LANG='C'
 export LC_TIME='C'
 
 if command -v manpath >/dev/null; then
-    MANPATH=$(manpath)
+    MANPATH=$(manpath -q)
 fi
 
 function {
