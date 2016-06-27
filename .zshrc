@@ -23,6 +23,12 @@ alias rm='rm -i'
 
 alias ls='ls -F'
 
+for op in open xdg-open; do
+    if command -v $op >/dev/null; then
+        alias o=$op
+    fi
+done
+
 dup() {
     for f
     do
