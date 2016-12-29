@@ -1,0 +1,41 @@
+* mac binding
+[scroll]>[shutdn]
+[kp=]>[kp=mac]
+[lctrl]>[lwin]
+[kp-lctrl]>[kp-lwin]
+[rctrl]>[rwin]
+[kp-rctrl]>[kp-rwin]
+[rwin]>[rctrl]
+[kp-rwin]>[kp-rctrl]
+
+* place up and down in the same order as in vi
+[up]>[down]
+[down]>[up]
+[kp-up]>[kp-down]
+[kp-down]>[kp-up]
+
+* esc at the right of `
+[intl-\]>[escape]
+
+* swap caplock and ctrl
+[caps]>[lctrl]
+[kp-caps]>[kp-lctrl]
+
+* F1, ..., F15 in keypad layer
+[kp-Q]>[F1]
+[kp-W]>[F2]
+[kp-E]>[F3]
+[kp-R]>[F4]
+[kp-T]>[F5]
+
+[kp-A]>[F6]
+[kp-S]>[F7]
+[kp-D]>[F8]
+[kp-F]>[F9]
+[kp-G]>[F10]
+
+[kp-Z]>[F11]
+[kp-X]>[F12]
+[kp-C]>[F13]
+[kp-V]>[F14]
+[kp-B]>[F15]
