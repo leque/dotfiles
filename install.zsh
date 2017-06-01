@@ -67,6 +67,7 @@ function {
 Install .ideavimrc
 Install .inputrc
 Install .tmux.conf
+Install .vimrc
 Install .zlogout .zshenv .zshrc
 Install bin/*(.)
 
