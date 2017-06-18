@@ -11,9 +11,11 @@ set ambiwidth=double
 
 set smartcase
 set hlsearch
-set backspace=2
+set backspace=indent,eol,start
 set list
-set lcs=tab:>\ ,trail:_,precedes:<,extends:\
+set listchars=tab:>\ ,trail:_,precedes:<,extends:\
 set laststatus=2
 set showcmd
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+highlight SpecialKey ctermfg=cyan
