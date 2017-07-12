@@ -19,12 +19,17 @@ function Do() {
     $@
 }
 
-if [ $# -gt 0 ]; then
+while [ $# -gt 0 ]; do
     case $1 in
         (-n|--dry-run)
             function Do() {
                 dprint $@
             }
+            shift
+            ;;
+        (-f|--force)
+            force=1
+            shift
             ;;
         (-h|--help)
             usage
@@ -35,7 +40,7 @@ if [ $# -gt 0 ]; then
             exit 1
             ;;
     esac
-fi
+done
 
 Install() {
     local dstdir src dst
@@ -46,7 +51,7 @@ Install() {
         fi
         src=$PWD/$f
         dst=$HOME/$f
-        if [ -e $dst -a ! \( -L $dst -a $src = $dst:A \) ]; then
+        if [ -e $dst -a -z "$force" -a ! \( -L $dst -a $src = $dst:A \) ]; then
             echo "${fg_bold[red]}==> $dst is already exists. do not overwrite.$reset_color"
         else
             Do ln -sf $src $dst
