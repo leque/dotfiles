@@ -28,3 +28,9 @@ for op in open xdg-open; do
         alias o=$op
     fi
 done
+
+if command -v start >/dev/null && command -v cygpath >/dev/null; then
+    o() {
+        start "$(cygpath -w "$1")"
+    }
+fi
