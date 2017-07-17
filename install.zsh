@@ -73,6 +73,7 @@ Install .ideavimrc
 Install .inputrc
 Install .tmux.conf
 Install .vimrc
+Install .config/env.sh
 Install .bash_profile .bashrc
 Install .zlogout .zshenv .zshrc
 Install bin/*(.)
