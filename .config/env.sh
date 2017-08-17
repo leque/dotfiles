@@ -1,7 +1,7 @@
 #!/bin/sh
 umask 022
 
-CDPATH=".:~"
+CDPATH=".:$HOME"
 FIGNORE=.o:.aux:.out
 
 for pager in lv
