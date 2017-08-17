@@ -1,3 +1,7 @@
+if set -o | grep -q aliasfuncdef; then
+    setopt alias_func_def
+fi
+
 . ~/.config/env.sh
 
 fpath=($fpath $HOME/.zfunctions)
