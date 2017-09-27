@@ -19,3 +19,12 @@ set showcmd
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 highlight SpecialKey ctermfg=cyan
+
+if has('vim_starting')
+    " blinking line cursor in insert mode
+    let &t_SI .= "\e[5 q"
+    " blinking block cursor in command mode
+    let &t_EI .= "\e[0 q"
+    " bliking underline in replace mode
+    let &t_SR .= "\e[3 q"
+endif
