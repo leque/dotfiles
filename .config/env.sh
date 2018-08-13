@@ -34,3 +34,12 @@ if command -v start >/dev/null && command -v cygpath >/dev/null; then
         start "$(cygpath -w "$1")"
     }
 fi
+
+# for WSL
+if command -v tasklist.exe >/dev/null && [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+    if tasklist.exe | grep -q '^vcxsrv.exe '; then
+        export DISPLAY=localhost:0.0
+    else
+        echo "vcxsrv.exe is not running. check output of tasklist.exe"
+    fi
+fi
