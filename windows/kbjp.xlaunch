@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XLaunch WindowMode="MultiWindow" ClientMode="NoClient" LocalClient="False" Display="-1" LocalProgram="xcalc" RemoteProgram="xterm" RemotePassword="" PrivateKey="" RemoteHost="" RemoteUser="" XDMCPHost="" XDMCPBroadcast="False" XDMCPIndirect="False" Clipboard="True" ClipboardPrimary="True" ExtraParams="-dpi auto -xkbmodel jp106 -xkblayout jp" Wgl="True" DisableAC="False" XDMCPTerminate="False"/>
+<XLaunch
+    ClientMode="NoClient"
+    Clipboard="True"
+    ClipboardPrimary="True"
+    DisableAC="False"
+    Display="-1"
+    ExtraParams="-dpi auto -xkbmodel jp106 -xkblayout jp"
+    LocalClient="False"
+    LocalProgram="xcalc"
+    PrivateKey=""
+    RemoteHost=""
+    RemotePassword=""
+    RemoteProgram="xterm"
+    RemoteUser=""
+    Wgl="True"
+    WindowMode="MultiWindow"
+    XDMCPBroadcast="False"
+    XDMCPHost=""
+    XDMCPIndirect="False"
+    XDMCPTerminate="False"
+    />
