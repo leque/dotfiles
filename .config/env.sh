@@ -35,6 +35,12 @@ if command -v start >/dev/null && command -v cygpath >/dev/null; then
     }
 fi
 
+if command -v cmd.exe >/dev/null && command -v wslpath >/dev/null; then
+    o() {
+        cmd.exe /c start "" "$(wslpath -w "$1")"
+    }
+fi
+
 # for WSL
 if command -v tasklist.exe >/dev/null && [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     if tasklist.exe | grep -q '^vcxsrv.exe '; then
