@@ -1,1 +1,4 @@
 set clipboard=unnamed
+
+noremap <C-S-b> :action GotoImplementation<CR>
+noremap g: :action GotoAction<CR>
