@@ -8,4 +8,3 @@ javascript:(function(){
     document.execCommand('copy');
     t.parentNode.removeChild(t);
 })();
-
