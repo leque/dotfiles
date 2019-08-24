@@ -1,0 +1,12 @@
+= dotfiles
+
+== Dependencies
+
+* link:https://github.com/scop/bash-completion/[bash_completion] (if you use bash)
+
+== Installation
+
+[source,console]
+----
+% sh ./install.sh
+----
