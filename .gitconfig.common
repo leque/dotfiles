@@ -1,5 +1,10 @@
 [alias]
 	co = checkout
 	st = status
+	amend = commit --amend
 [core]
 	commentchar = %
+[pull]
+	ff = true
+[log]
+	date = iso
