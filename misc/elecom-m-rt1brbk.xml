@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+    <vid>1390</vid>
+    <pid>342</pid>
+    <select_profile>0</select_profile>
+    <profile>
+        <profname>デフォルト</profname>
+        <!-- left button: mouse-1 -->
+        <lbutton>1</lbutton>
+        <lbutton_etcKey_key1>0</lbutton_etcKey_key1>
+        <lbutton_etcKey_key2>0</lbutton_etcKey_key2>
+        <!-- right button: mouse-2 -->
+        <rbutton>2</rbutton>
+        <rbutton_etcKey_key1>0</rbutton_etcKey_key1>
+        <rbutton_etcKey_key2>0</rbutton_etcKey_key2>
+        <!-- third button: mouse-3-->
+        <tbutton>9</tbutton>
+        <tbutton_etcKey_key1>0</tbutton_etcKey_key1>
+        <tbutton_etcKey_key2>0</tbutton_etcKey_key2>
+        <!-- button 4: Command-<left> -->
+        <button4>41</button4>
+        <button4_etcKey_key1>1</button4_etcKey_key1>
+        <button4_etcKey_key2>72</button4_etcKey_key2>
+        <!-- button 5: Command-<right> -->
+        <button5>41</button5>
+        <button5_etcKey_key1>1</button5_etcKey_key1>
+        <button5_etcKey_key2>73</button5_etcKey_key2>
+        <!-- tilt-left (disabled): <scroll-left> -->
+        <tiltleft>39</tiltleft>
+        <tiltleft_etcKey_key1>0</tiltleft_etcKey_key1>
+        <tiltleft_etcKey_key2>0</tiltleft_etcKey_key2>
+        <!-- tilt-right (disabled): <scroll-right> -->
+        <tiltright>40</tiltright>
+        <tiltright_etcKey_key1>0</tiltright_etcKey_key1>
+        <tiltright_etcKey_key2>0</tiltright_etcKey_key2>
+        <!-- button 6: ESC -->
+        <button6>17</button6>
+        <button6_etcKey_key1>0</button6_etcKey_key1>
+        <button6_etcKey_key2>0</button6_etcKey_key2>
+        <!-- button 7: {close-window} -->
+        <button7>6</button7>
+        <button7_etcKey_key1>0</button7_etcKey_key1>
+        <button7_etcKey_key2>0</button7_etcKey_key2>
+        <!-- button 8: Ctrl-<left> -->
+        <button8>41</button8>
+        <button8_etcKey_key1>9</button8_etcKey_key1>
+        <button8_etcKey_key2>72</button8_etcKey_key2>
+        <!-- button 9: Ctrl-<right> -->
+        <button9>41</button9>
+        <button9_etcKey_key1>9</button9_etcKey_key1>
+        <button9_etcKey_key2>73</button9_etcKey_key2>
+        <!-- button 10: {exposé-all-window} -->
+        <button10>33</button10>
+        <button10_etcKey_key1>0</button10_etcKey_key1>
+        <button10_etcKey_key2>0</button10_etcKey_key2>
+
+        <scrolls>5</scrolls>
+        <hlotate>5</hlotate>
+        <hspeed>5</hspeed>
+        <hcount>0</hcount>
+        <dispGesture>1</dispGesture>
+        <language>0</language>
+    </profile>
+</data>
