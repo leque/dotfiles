@@ -4,7 +4,7 @@ umask 022
 CDPATH=".:$HOME"
 FIGNORE=.o:.aux:.out
 
-for pager in lv
+for pager in less
 do
     if command -v $pager >/dev/null; then
         export PAGER=$pager
