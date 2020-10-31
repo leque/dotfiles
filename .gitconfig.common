@@ -5,6 +5,6 @@
 [core]
 	commentchar = %
 [pull]
-	ff = true
+	ff = only
 [log]
 	date = iso
