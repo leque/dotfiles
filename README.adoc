@@ -10,3 +10,5 @@
 ----
 % sh ./install.sh
 ----
+
+For platform-dependent settings, run `setup/*` scripts.
