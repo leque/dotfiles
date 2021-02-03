@@ -1,7 +1,7 @@
 #!/bin/sh
 vscode_home=
 vscode_save=vscode
-this="$(basename "$0")"
+prog="$(basename "$0")"
 topdir="$(git rev-parse --show-toplevel)"
 
 cd "$topdir"
@@ -9,8 +9,8 @@ mkdir -p "$vscode_save"
 
 usage() {
     cat <<EOF
-usage: $this save
-       $this restore
+usage: $prog save
+       $prog restore
 EOF
 }
 
@@ -43,15 +43,15 @@ find_home() {
         vscode_home="$vscode_home_linux"
     else
         cat <<EOF >&2
-    $this: cannot find vscode's settings directory. You never run vscode here yet?
-    Candicates are:
-      - $vscode_home_win
-      - $vscode_home_mac
-      - $vscode_home_linux
+$prog: cannot find vscode's settings directory. You have never run vscode here yet?
+Candidates are:
+  - $vscode_home_win
+  - $vscode_home_mac
+  - $vscode_home_linux
 EOF
         exit 1
     fi
-    echo "$this: vscode_home=$vscode_home" >&2
+    echo "$prog: vscode_home=$vscode_home" >&2
 }
 
 case $1 in
