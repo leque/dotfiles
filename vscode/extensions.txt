@@ -1,0 +1,5 @@
+asciidoctor.asciidoctor-vscode
+mechatroner.rainbow-csv
+ms-python.python
+ms-toolsai.jupyter
+vscodevim.vim
