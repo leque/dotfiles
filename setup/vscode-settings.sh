@@ -8,7 +8,10 @@ cd "$topdir"
 mkdir -p "$vscode_save"
 
 usage() {
-    echo "usage: $this {save|restore}"
+    cat <<EOF
+usage: $this save
+       $this restore
+EOF
 }
 
 save_settings() {
