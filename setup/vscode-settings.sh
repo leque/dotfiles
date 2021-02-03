@@ -36,7 +36,7 @@ find_home() {
         vscode_home="$vscode_home_win"
     elif [ -d "$vscode_home_mac" ]; then
         vscode_home="$vscode_home_mac"
-    elif [ -d "$vscode_home_win" ]; then
+    elif [ -d "$vscode_home_linux" ]; then
         vscode_home="$vscode_home_linux"
     else
         cat <<EOF >&2
