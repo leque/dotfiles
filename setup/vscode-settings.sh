@@ -23,6 +23,9 @@ restore_settings() {
     cp -f "$vscode_save/keybindings.json" "$vscode_home"
 }
 
+# Settings file locations
+# https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations
+# Why does not code(1) tell me this?
 code_user="Code/User"
 vscode_home_win="$HOME/AppData/Roaming/$code_user"
 vscode_home_mac="$HOME/Library/Application Support/$code_user"
