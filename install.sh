@@ -82,8 +82,8 @@ IFS='
 
 cd "$(git rev-parse --show-toplevel)"
 
-if git config --global --path --get-all include.path \
-        | grep -v "^$HOME/.gitconfig.common$" >/dev/null
+if ! git config --global --path --get-all include.path \
+        | grep "^$HOME/.gitconfig.common$" >/dev/null
 then
     Do git config --global --add include.path "$HOME/.gitconfig.common"
 fi
