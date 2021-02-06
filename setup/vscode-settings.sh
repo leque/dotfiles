@@ -34,23 +34,31 @@ vscode_home_win="$HOME/AppData/Roaming/$code_user"
 vscode_home_mac="$HOME/Library/Application Support/$code_user"
 vscode_home_linux="$HOME/.config/$code_user"
 
-find_home() {
-    if [ -d "$vscode_home_win" ]; then
-        vscode_home="$vscode_home_win"
-    elif [ -d "$vscode_home_mac" ]; then
-        vscode_home="$vscode_home_mac"
-    elif [ -d "$vscode_home_linux" ]; then
-        vscode_home="$vscode_home_linux"
-    else
-        cat <<EOF >&2
+find_home0() {
+    for d; do
+        if [ -d "$d" ]; then
+            vscode_home="$d"
+            return
+        fi
+    done
+    {
+        cat <<EOF
 $prog: cannot find vscode's settings directory. You have never run vscode here yet?
 Candidates are:
-  - $vscode_home_win
-  - $vscode_home_mac
-  - $vscode_home_linux
 EOF
-        exit 1
-    fi
+        for d; do cat <<EOF; done
+  - $d
+EOF
+    } >&2
+    exit 1
+}
+
+find_home() {
+    find_home0 \
+        "$vscode_home_win"	\
+        "$vscode_home_mac"	\
+        "$vscode_home_linux"	\
+        ;
     echo "$prog: vscode_home=$vscode_home" >&2
 }
 
