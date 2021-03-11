@@ -15,6 +15,7 @@ done
 export LANG=ja_JP.UTF-8
 export EDITOR=vi
 export LV="-Ou -s -c"
+export LESS="-iMR"
 export RLWRAP_HOME=$HOME/.config/rlwrap
 
 alias cp='cp -i'
