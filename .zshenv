@@ -8,31 +8,43 @@ if command -v manpath >/dev/null; then
     MANPATH=$(manpath -q)
 fi
 
+my_add_to_list() {
+    local target v
+    target=$1
+    shift
+    for v; do
+        if ((! ${${(P)target}[(Ie)$v]})); then
+            set -A $target $v ${(P)target}
+        fi
+    done
+}
+
 function {
-    local -a dirs bin man p
+    local -a dirs bin man cpath
     dirs=(
-        $HOME
-        $HOME/.cabal/bin
-        /usr/local
-        /opt/local
-        /sw
-        /usr/pkg
-        /usr/X11R6
+        ""
         /usr
+        /usr/X11R6
+        /usr/pkg
+        /sw
+        /opt/local
+        /usr/local
+        $HOME/.cabal
+        $HOME
     )
     bin=(bin sbin)
     man=(man share/man)
 
-    path=(${^dirs}/${^bin}(N-/) $path)
-    typeset -U path
+    my_add_to_list path ${^dirs}/${^bin}(N-/)
 
-    manpath=(${^dirs}/${^man}(N-/) $manpath)
-    typeset -U manpath
+    my_add_to_list manpath ${^dirs}/${^man}(N-/)
 
-    p=(${^dirs}/include(N-/))
-    CPATH=${(j/:/)${(u)p}}
+    my_add_to_list cpath ${^dirs}/include(N-/)
+    CPATH=${(j/:/)${cpath}}
     export CPATH
 }
+
+unfunction my_add_to_list
 
 case $(uname) in
     (Darwin)
