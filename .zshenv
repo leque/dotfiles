@@ -1,3 +1,6 @@
+# avoid `/usr/libexec/path_helper -s` via /etc/profile
+unsetopt global_rcs
+
 export LANG='C'
 export LC_TIME='C'
 
