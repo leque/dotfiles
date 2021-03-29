@@ -19,8 +19,10 @@ my_add_to_list() {
     done
 }
 
+typeset -xT CPATH cpath
+
 function {
-    local -a dirs bin man cpath
+    local -a dirs bin man
     dirs=(
         ""
         /usr
@@ -36,12 +38,8 @@ function {
     man=(man share/man)
 
     my_add_to_list path ${^dirs}/${^bin}(N-/)
-
     my_add_to_list manpath ${^dirs}/${^man}(N-/)
-
     my_add_to_list cpath ${^dirs}/include(N-/)
-    CPATH=${(j/:/)${cpath}}
-    export CPATH
 }
 
 unfunction my_add_to_list
