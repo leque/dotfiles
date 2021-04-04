@@ -29,7 +29,7 @@ alias -g //="| autopager $PAGER"
 setopt always_last_prompt auto_cd auto_list auto_menu auto_param_keys
 setopt auto_remove_slash complete_in_word correct extended_glob
 setopt hist_ignore_all_dups hist_ignore_space hist_no_store hist_reduce_blanks
-setopt list_ambiguous no_beep no_list_beep no_clobber prompt_subst
+setopt list_ambiguous magic_equal_subst no_beep no_list_beep no_clobber prompt_subst
 setopt share_history
 
 # vcs
