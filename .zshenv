@@ -20,6 +20,7 @@ function {
     dirs=(
         $HOME
         $HOME/.cabal
+        $HOME/.dotnet/tools
         $HOME/.local
         /usr/local
         /opt/local
