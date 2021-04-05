@@ -115,6 +115,10 @@ bindkey -a '^N' vi-down-line-or-history
 bindkey -a '^[[A' up-line-or-beginning-search
 bindkey -a '^[[B' down-line-or-beginning-search
 
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 # Local configurations
 if [ -d ~/.config/zsh ]; then
     for rc in ~/.config/zsh/*(.UN^WI)
