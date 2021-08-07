@@ -44,6 +44,14 @@ while [ $# -gt 0 ]; do
     esac
 done
 
+if command -v perl >/dev/null; then
+    ReadLink() { perl -MCwd -e 'print Cwd::realpath($ARGV[0])' "$1"; }
+elif command -v realpath >/dev/null; then
+    ReadLink() { realpath "$1"; }
+else
+    ReadLink() { readlink "$1"; }
+fi
+
 Install() {
     for f; do
         src="$PWD/$f"
@@ -57,13 +65,7 @@ Install() {
         if [ "$force" ] || [ ! -e "$dst" ]; then
             Do ln -sf "$src" "$dst"
         else
-            if command -v perl >/dev/null; then
-                realdst=$(perl -MCwd -e 'print Cwd::realpath($ARGV[0])' "$dst")
-            elif command -v realpath >/dev/null; then
-                realdst=$(realpath "$dst")
-            else
-                realdst=$(readlink "$dst")
-            fi
+            realdst=$(ReadLink "$dst")
 
             if [ -L "$dst" ] && [ "$src" = "$realdst" ]; then
                 printf '\033[36m==> %s\033[0m\n' \
