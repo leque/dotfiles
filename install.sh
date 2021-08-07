@@ -76,10 +76,6 @@ Install() {
     done
 }
 
-ifs="$IFS"
-IFS='
-'
-
 cd "$(git rev-parse --show-toplevel)"
 
 if ! git config --global --path --get-all include.path \
@@ -103,7 +99,7 @@ case $(uname) in
     (Darwin)
         (
             cd macosx
-            for f in $(find Library -type f); do
+            find Library -type f | while read -r f; do
                 Install "$f";
             done
         )
