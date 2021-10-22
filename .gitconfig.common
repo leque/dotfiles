@@ -8,3 +8,5 @@
 	ff = only
 [log]
 	date = iso
+[user]
+	useConfigOnly = true
