@@ -1,5 +1,4 @@
 [alias]
-	co = checkout
 	st = status
 	amend = commit --amend
 [core]
