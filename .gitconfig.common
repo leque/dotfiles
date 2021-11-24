@@ -1,6 +1,5 @@
 [alias]
 	st = status
-	amend = commit --amend
 [core]
 	commentchar = %
 [pull]
