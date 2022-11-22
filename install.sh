@@ -93,6 +93,7 @@ Install .tmux.conf
 Install .vimrc
 Install .config/env.sh
 Install .config/tmux/*
+Install .config/utop/*
 Install .bash_profile .bashrc
 Install .zlogout .zshenv .zshrc
 Install bin/*
