@@ -6,7 +6,7 @@ set shiftwidth=4
 set expandtab
 
 set encoding=utf-8
-set fileencodings=ucs-bom,euc-jp,sjis,cp932,utf-8
+set fileencodings=ucs-bom,utf-8,euc-jp,sjis,cp932
 set ambiwidth=double
 
 set smartcase
