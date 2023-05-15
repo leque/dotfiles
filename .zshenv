@@ -43,7 +43,6 @@ function {
 
 case $(uname) in
     (Darwin)
-        export JAVA_HOME=$(/usr/libexec/java_home)
         export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
         ;;
 esac
