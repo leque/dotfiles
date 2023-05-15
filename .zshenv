@@ -22,6 +22,8 @@ function {
         $HOME/.cabal
         $HOME/.dotnet/tools
         $HOME/.local
+        /opt/homebrew
+        /opt/homebrew/opt/openssl
         /usr/local
         /opt/local
         /sw
