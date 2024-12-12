@@ -1,0 +1,83 @@
+#!/bin/sh
+
+usage() {
+    cat <<EOF
+usage: $(basename "$0") [-h] [-m] [-q] <upstream>
+
+Options:
+  -h   Show this message and exit.
+  -m   Merge only. Keep the merge branch and the current branch.
+       (Do not delete the merge branch, nor move the current branch)
+  -q   Quick. Merge the entire branch at once instead of merging each commit one by one.
+
+do psycho-rebasing as described in https://tech.people-doc.com/psycho-rebasing.html
+EOF
+}
+
+merge_only=
+quick=
+
+while getopts hmq optopt; do
+    case "$optopt" in
+        (h)
+            usage
+            exit
+            ;;
+        (m)
+            merge_only=1
+            ;;
+        (q)
+            quick=1
+            ;;
+        (*)
+            usage >&2
+            exit 1
+    esac
+done
+
+shift $((OPTIND - 1))
+
+if [ $# -ne 1 ]; then
+    usage >&2
+    exit 1
+fi
+
+if ! git diff --quiet; then
+    cat <<EOF >&2
+error: You have unstaged changes.
+error: Please commit or stash them.
+EOF
+    exit 1
+fi
+
+upstream=$1
+current=$(git symbolic-ref --short HEAD)
+base=$(git merge-base "$upstream" "$current")
+work="$current-merge"
+
+if [ -z "$current" ] || [ -z "$base" ]; then
+    exit 1
+fi
+
+if [ "$base" = "$(git rev-parse "$upstream")" ]; then
+    echo "Already up to date."
+    exit
+fi
+
+git switch -c "$work" "$upstream" || exit 1
+
+if [ "$quick" ]; then
+    git merge --no-edit "$current" || exit 1
+else
+    for c in $(git rev-list --in-commit-order --reverse "^$base" "$current"); do
+        git merge --no-edit "$c" || exit 1
+    done
+fi
+
+if [ "$merge_only" ]; then
+    git switch "$current"
+else
+    git branch -f "$current" &&
+        git switch "$current" &&
+        git branch -d "$work"
+fi
