@@ -1,0 +1,29 @@
+#!/usr/bin/env -S deno run
+import { parseArgs } from "node:util";
+import { generate } from "jsr:@std/uuid/unstable-v7";
+import { pipe } from "https://deno.land/x/fp_ts/function.ts";
+
+const { values: flags, positionals: _ } = parseArgs({
+  args: Deno.args,
+  options: {
+    hyphens: {
+      type: "boolean",
+      short: "y",
+      default: false,
+    },
+    uppercase: {
+      type: "boolean",
+      short: "u",
+      default: false,
+    },
+  },
+  allowNegative: true,
+});
+
+console.log(
+  pipe(
+    generate(),
+    (v) => flags.hyphens ? v : v.replaceAll("-", ""),
+    (v) => flags.uppercase ? v.toUpperCase() : v,
+  ),
+);
