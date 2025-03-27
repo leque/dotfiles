@@ -8,3 +8,5 @@
 	date = iso
 [user]
 	useConfigOnly = true
+[grep]
+	lineNumber = true
