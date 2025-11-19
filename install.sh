@@ -1,8 +1,14 @@
 #!/bin/sh
 set -e
 
+__reset=$(tput sgr0)
+__bold=$(tput bold)
+__redfg=$(tput setaf 1)
+__bluefg=$(tput setaf 4)
+__cyanfg=$(tput setaf 6)
+
 dprint() {
-    printf '\033[34m==>\033[0m '
+    printf "${__bluefg}==>${__reset} "
     echo "$@"
 }
 
@@ -68,10 +74,10 @@ Install() {
             realdst=$(ReadLink "$dst")
 
             if [ -L "$dst" ] && [ "$src" = "$realdst" ]; then
-                printf '\033[36m==> %s\033[0m\n' \
+                printf "${__cyanfg}==> %s${__reset}\n" \
                        "already installed: $dst"
             else
-                printf '\033[1m\033[31m==> %s\033[0m\n' \
+                printf "${__bold}${__redfg}==> %s${__reset}\n" \
                        "already exists: $dst"
             fi
         fi
